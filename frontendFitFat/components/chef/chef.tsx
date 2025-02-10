@@ -13,7 +13,7 @@ export default function ChefInfo() {
         <Image
           source={require('../../assets/images/real/chef.png')}
           style={styles.personImage}
-          resizeMode="cover"
+          resizeMode="contain"
         />
       </View>
 
