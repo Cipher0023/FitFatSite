@@ -18,12 +18,6 @@ export default function Header() {
         />
       </View>
 
-      {/* Container do Título (Centro) */}
-      <View style={styles.centerContainer}>
-        <Text style={[styles.title, { color: theme.textTitle }]}>
-          FitFat marmitas saudáveis
-        </Text>
-      </View>
 
       {/* Container do Menu (Direita) */}
       <View style={styles.rightContainer}>
@@ -45,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 16,
-    height: 60, // Altura fixa para melhor consistência
+    height: 90, // Altura fixa para melhor consistência
   },
   leftContainer: {
     flex: 1,
@@ -69,7 +63,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   logoImage: {
-    width: 100, // Largura fixa
-    height: 100, // Altura fixa
+    width: 250, // Largura fixa
+    height: 250, // Altura fixa
   },
 });
