@@ -1,8 +1,7 @@
 import { ScrollView, Text, View, Image, StyleSheet, Dimensions } from "react-native";
-import ProductCard from '../components/productBox/productBox';
 import { useAppStore } from '../store/store';
 import { Colors } from '../constants/colors';
-import Carousel from "../components/carrousel/carousel";
+import Carousel from "../components/carousel/carousel";
 import ChefInfo from "@/components/chef/chef";
 
 const data = [
@@ -22,13 +21,13 @@ export default function Index() {
   const screenWidth = Dimensions.get('window').width;
 
   const dynamicStyles = StyleSheet.create({
-    container: {
+    page: {
       flex: 1,
       backgroundColor: theme.background,
     },
     scrollContent: {
-      flexGrow: 1,
-      paddingBottom: 40, // Espaço no final do scroll
+      paddingBottom: 40,
+      justifyContent: 'flex-start'
     },
     text: {
       fontSize: 24,
@@ -39,49 +38,27 @@ export default function Index() {
       paddingHorizontal: 15,
     },
     heroContainer: {
-      width: screenWidth * 1, // 60% da largura da tela
-      marginBottom: 20,
-      height: 300
+      flex: 1,
+      marginBottom: 10,
+      backgroundColor:theme.test
     },
     heroImage: {
-      width: '100%',
-      height: '100%',
-      resizeMode: 'cover',
-      position: 'relative',
-    },
-    heroTextContainer: {
-      position: 'absolute',
-      bottom: 20,
-      left: 0,
-      right: 0,
-      paddingHorizontal: 15,
-    },
-    heroText: {
-      fontSize: 32,
-      fontWeight: '800',
-      color: 'white',
-      textAlign: 'center',
-      textShadowColor: 'rgba(0,0,0,0.5)',
-      textShadowOffset: { width: 1, height: 1 },
-      textShadowRadius: 5,
+      height: screenWidth/2, 
+      width:screenWidth,
+      justifyContent: 'center'
     }
   });
 
   return (
-    <View style={dynamicStyles.container}>
+    <View style={dynamicStyles.page}>
       <ScrollView 
         contentContainerStyle={dynamicStyles.scrollContent}
         showsVerticalScrollIndicator={true}
       >
-        <View style={dynamicStyles.heroContainer}>
-          <Image
-            source={require('../assets/images/real/fitfatHeroImage.png')}
-            style={dynamicStyles.heroImage}
-          />
-          <View style={dynamicStyles.heroTextContainer}>
-            <Text style={dynamicStyles.heroText}>Marmitas Fit & Saborosas</Text>
-          </View>
-        </View>
+        <Image
+          source={require('../assets/images/real/fitfatHeroImage.png')}
+          style={dynamicStyles.heroImage}
+        />
 
         <Text style={dynamicStyles.text}>Marmitas do dia</Text>
 
@@ -89,15 +66,7 @@ export default function Index() {
 
         <ChefInfo />
 
-        <ProductCard
-          title="Marmita Básica"
-          price={49.90}
-          imageUrl="https://exemplo.com/camiseta.jpg"
-          onPress={() => console.log('Produto clicado')}
-        />
-
-        {/* Adicione mais espaço no final se necessário */}
-        <View style={{ height: 20 }} /> 
+        {/* Outros componentes */}
       </ScrollView>
     </View>
   );

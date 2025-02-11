@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useAppStore } from '../store/store';
 import Header from '../components/header/header'
 import DropdownMenu from '../components/dropdownMenu/dropdown'
-import SettingsMenu from '../components/configMenu/Menu'
+import SettingsMenu from '../components/dropdownMenu/configMenu/Menu'
 
 export default function Layout() {
   // Busca apenas os estados/ações necessários

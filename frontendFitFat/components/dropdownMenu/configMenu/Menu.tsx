@@ -1,6 +1,6 @@
 import { View, Pressable, Text, Switch,StyleSheet } from 'react-native';
-import { useAppStore } from '../../store/store';
-import { Colors } from '../../constants/colors';
+import { useAppStore } from '@/store/store';
+import { Colors } from '@/constants/colors';
 
 export default function SettingsMenu() {
   const { 
