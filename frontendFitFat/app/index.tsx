@@ -40,7 +40,7 @@ export default function Index() {
     },
     heroContainer: {
       flex: 1,
-      marginBottom: 50,
+      marginBottom: 10,
     },
     heroImage: {
       height: screenWidth/3, 
