@@ -1,7 +1,5 @@
 import { Stack } from 'expo-router';
-import { View, Text, StyleSheet, Pressable,Switch  } from 'react-native';
-import { useState } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { View, Text, StyleSheet} from 'react-native';
 import { useAppStore } from '../store/store';
 import Header from '../components/header/header'
 import DropdownMenu from '../components/dropdownMenu/dropdown'
