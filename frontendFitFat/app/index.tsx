@@ -43,9 +43,9 @@ export default function Index() {
       backgroundColor:theme.test
     },
     heroImage: {
-      height: screenWidth/2, 
+      height: screenWidth/3, 
       width:screenWidth,
-      justifyContent: 'center'
+      alignSelf: 'center'
     }
   });
 
@@ -55,10 +55,13 @@ export default function Index() {
         contentContainerStyle={dynamicStyles.scrollContent}
         showsVerticalScrollIndicator={true}
       >
-        <Image
-          source={require('../assets/images/real/fitfatHeroImage.png')}
-          style={dynamicStyles.heroImage}
-        />
+      
+        <View style={dynamicStyles.heroContainer}>
+          <Image
+            source={require('../assets/images/real/fitfatHeroImage.png')}
+            style={dynamicStyles.heroImage}
+          />
+        </View>
 
         <Text style={dynamicStyles.text}>Marmitas do dia</Text>
 

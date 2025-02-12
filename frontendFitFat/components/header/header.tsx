@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   logoImage: {
-    width: 250, // Largura fixa
-    height: 250, // Altura fixa
+    width: 150, // Largura fixa
+    height: 150, // Altura fixa
   },
 });
