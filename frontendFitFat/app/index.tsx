@@ -1,8 +1,9 @@
 import { ScrollView, Text, View, Image, StyleSheet, Dimensions } from "react-native";
 import { useAppStore } from '../store/store';
 import { Colors } from '../constants/colors';
-import Carousel from "../components/carousel/carousel";
+import Carousel from "../components/carousel/weklyCarousel/weklyCarousel";
 import ChefInfo from "@/components/chef/chef";
+import Slider from "@/components/carousel/highlightsCarousel/slider";
 
 const data = [
   { id: "1", title: "Segunda" },
@@ -39,13 +40,17 @@ export default function Index() {
     },
     heroContainer: {
       flex: 1,
-      marginBottom: 10,
-      backgroundColor:theme.test
+      marginBottom: 50,
     },
     heroImage: {
       height: screenWidth/3, 
       width:screenWidth,
       alignSelf: 'center'
+    },
+    testContainer: {
+      flex: 1,
+      marginBottom: 10,
+      backgroundColor:theme.test
     }
   });
 
@@ -61,6 +66,10 @@ export default function Index() {
             source={require('../assets/images/real/fitfatHeroImage.png')}
             style={dynamicStyles.heroImage}
           />
+        </View>
+
+        <View style={dynamicStyles.testContainer}>
+          <Slider/>
         </View>
 
         <Text style={dynamicStyles.text}>Marmitas do dia</Text>
