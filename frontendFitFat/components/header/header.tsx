@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 16,
-    height: 90, // Altura fixa para melhor consistência
+    height: 70, // Altura fixa para melhor consistência
   },
   leftContainer: {
     flex: 1,
