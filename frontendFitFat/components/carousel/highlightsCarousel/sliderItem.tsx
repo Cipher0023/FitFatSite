@@ -9,27 +9,31 @@ import { Ionicons } from "@expo/vector-icons";
 type Props = {
     item: ImageSliderType;
     index: number;
-}
+    onNext: () => void;
+    onPrevious: () => void;
+};
+
 const screenWidth = Dimensions.get('window').width;
 
-const SliderItem = ({item,index}: Props) => {
+const SliderItem = ({item,index, onNext, onPrevious}: Props) => {
   return (
     <View style={styles.itemContainer}>
 
-      <Image source={item.image} style={styles.imageStile}/>
+      <Image source={item.image} style={styles.imageStile} />
 
       <LinearGradient colors={['transparent','rgba(0,0,0,0.8)']} style = {styles.background}>
 
         <View style={{alignItems:'flex-end'}}>
 
-          <View style={styles.contols}>
+          <View style={styles.controls}>
 
-          <TouchableOpacity style={styles.icon}>
-            <Ionicons name="arrow-back-circle-outline" size={24} color={'rgb(255, 255, 255)'} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.icon}>
-            <Ionicons name="arrow-forward-circle-outline" size={24} color={'rgb(255, 255, 255)'} />
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.icon} onPress={onPrevious}>
+              <Ionicons name="arrow-back-circle-outline" size={24} color={'rgb(255, 255, 255)'} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.icon} onPress={onNext}>
+              <Ionicons name="arrow-forward-circle-outline" size={24} color={'rgb(255, 255, 255)'} />
+            </TouchableOpacity>
 
           </View>
 
@@ -89,10 +93,13 @@ const styles = StyleSheet.create({
     height:35
     
   },
-  contols:{
+  controls:{
     flex:1,
     flexDirection:'row',
+    width:'100%',
+    position:'absolute',
     justifyContent: 'space-between',
+    backgroundColor: Colors.light.test3
   }
 
 

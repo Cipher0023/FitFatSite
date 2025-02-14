@@ -12,7 +12,7 @@ export default function Header() {
       {/* Container da Logo (Esquerda) */}
       <View style={styles.leftContainer}>
         <Image
-          source={require('../../assets/images/real/fitfat.jpeg')}
+          source={require('../../assets/images/real/fitfat.png')}
           style={styles.logoImage}
           resizeMode="contain"
         />

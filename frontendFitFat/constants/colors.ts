@@ -8,8 +8,9 @@ export const Colors = {
       overlay: 'rgba(255,255,255,0.3)',
       icons: 'rgb(0, 0, 0)',
       shadow: 'rgb(0, 0, 0)',
-      test: 'rgb(247, 0, 255,0)',
-      test2: 'rgb(0, 255, 208,0)'
+      test: 'rgb(247, 0, 255)',
+      test2: 'rgb(0, 255, 208)',
+      test3: 'rgb(255, 111, 0)',
     },
     dark: {
       background: 'rgb(65, 65, 65)',
@@ -20,8 +21,9 @@ export const Colors = {
       overlay: 'rgba(0,0,0,0.6)',
       icons: 'rgb(255, 255, 255)',
       shadow: 'rgb(122, 122, 122)',
-      test: 'rgb(247, 0, 255,0)',
-      test2: 'rgb(0, 255, 208,0)'
+      test: 'rgb(247, 0, 255)',
+      test2: 'rgb(0, 255, 208)',
+      test3: 'rgb(255, 111, 0)'
     }
   };
   
