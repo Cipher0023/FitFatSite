@@ -1,165 +1,120 @@
-import { StyleSheet,Text,View, Image, Dimensions, TouchableOpacity} from "react-native";
-import React from 'react'
+import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from "react-native";
+import React from 'react';
 import { ImageSliderType } from "@/placeholderData/data";
-import {LinearGradient} from 'expo-linear-gradient'
+import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from "@/constants/colors";
 import { Ionicons } from "@expo/vector-icons";
-import Animated,{
-  SharedValue,
-  useAnimatedStyle,
-  interpolate,
-  Extrapolation
-} from "react-native-reanimated";
-
+import Animated, { SharedValue, useAnimatedStyle, interpolate, Extrapolation } from "react-native-reanimated";
 
 type Props = {
-    item: ImageSliderType;
-    index: number;
-    scrollX: SharedValue<number>
-    screenWidth: number;
-    onNext:() =>void;
-    onPrevious:() =>void;
+  item: ImageSliderType;
+  index: number;
+  scrollX: SharedValue<number>;
+  screenWidth: number;
+  onNext: () => void;
+  onPrevious: () => void;
 };
 
 const screenWidth = Dimensions.get('window').width;
 
-const SliderItem = ({item,index,scrollX,screenWidth,onNext,onPrevious}: Props) => {
+const SliderItem = ({ item, index, scrollX, screenWidth, onNext, onPrevious }: Props) => {
+  const animatedStyle = useAnimatedStyle(() => {
+    const inputRange = [(index - 1) * screenWidth, index * screenWidth, (index + 1) * screenWidth];
+    const scale = interpolate(scrollX.value, inputRange, [0.8, 1, 0.8], Extrapolation.CLAMP);
+    const opacity = interpolate(scrollX.value, inputRange, [0.5, 1, 0.5], Extrapolation.CLAMP);
 
-  const animatedStyle = useAnimatedStyle(()=> {
-
-    const inputRange = [
-      (index-1)*screenWidth,
-      index*screenWidth,
-      (index+1)*screenWidth
-    ];
-    const translateX = interpolate(
-      scrollX.value,
-      inputRange,
-      [0.8,1,0.8],
-      Extrapolation.CLAMP
-    );
-    const opacity = interpolate(
-      scrollX.value,
-      inputRange,
-      [0.5,1,0.5],
-      Extrapolation.CLAMP
-    );
-    const scale = interpolate(
-      scrollX.value,
-      inputRange,
-      [0.8,1,0.8],
-      Extrapolation.CLAMP
-    );
-
-    return{
+    return {
       opacity,
-      transform: [
-          {translateX},
-          {scale}
-      ]
-    }
-  })
+      transform: [{ scale }],
+    };
+  });
 
   return (
-    <Animated.View style={[styles.container, {width: screenWidth}, animatedStyle]}>
-
-      <View style={styles.itemConatiner}>
-        
-        <Image source={item.image} style={[styles.image, {width:screenWidth/3}]} />
-
-        <LinearGradient colors={['transparent','rgba(0,0,0,0.8)']} style = {styles.gradient}>
-
-          <View style={{alignItems:'flex-end'}}>
-
-            <View style={styles.controls}>
-
-              <TouchableOpacity style={styles.icon} onPress={onPrevious}>
-                <Ionicons name="arrow-back-circle-outline" size={24} color={'rgb(255, 255, 255)'} />
-              </TouchableOpacity>
-
-              <TouchableOpacity style={styles.icon} onPress={onNext}>
-                <Ionicons name="arrow-forward-circle-outline" size={24} color={'rgb(255, 255, 255)'} />
-              </TouchableOpacity>
-
-            </View>
-
-          </View>
-
-          <View>
+    <Animated.View style={[styles.container, { width: screenWidth }, animatedStyle]}>
+      <View style={styles.itemContainer}>
+        <Image source={item.image} style={styles.image} />
+        <LinearGradient colors={['transparent', 'rgba(0,0,0,0.8)']} style={styles.gradient}>
+          <View style={styles.textContainer}>
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.description}>{item.description}</Text>
           </View>
-
         </LinearGradient>
-
+        <View style={styles.controls}>
+          <TouchableOpacity style={styles.button} onPress={onPrevious}>
+            <Ionicons name="arrow-back-circle-outline" size={24} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={onNext}>
+            <Ionicons name="arrow-forward-circle-outline" size={24} color="white" />
+          </TouchableOpacity>
+        </View>
       </View>
     </Animated.View>
-  )
-}
+  );
+};
 
-export default SliderItem
+export default SliderItem;
 
 const styles = StyleSheet.create({
-
-  itemConatiner:{
-    flex:1,
-    justifyContent: 'space-between',
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: Colors.light.test2,
   },
-  container:{
-    justifyContent:'center',
-    alignItems:'center',
-    gap:20,
-    width:500,
-    backgroundColor: Colors.light.test2
-  },
-  background:{
-    position:'absolute',
-    //height:screenWidth/3,
-    height:300,
-    //width:screenWidth-10,
-    width:300,
-    padding: 20,
-    borderRadius: 20,
-    justifyContent: 'space-between',
+  itemContainer: {
+    position: 'relative',
+    width: '100%',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   image: {
+    width: screenWidth / 2,
     height: 300,
     borderRadius: 20,
-    marginBottom: 10,
-    marginTop: 10,
+    resizeMode: 'cover',
+    marginVertical: 5,
   },
   gradient: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
-    width: "100%",
-    height: "40%",
+    left: 0,
+    right: 0,
+    height: '40%',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    padding: 20,
   },
-  title:{
-    color: 'rgb(255, 255, 255)',
-    fontSize:18,
-
+  textContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingVertical: 10,
   },
-  description:{
-    color: 'rgb(255, 255, 255)',
-    fontSize:10,
+  title: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
-  icon:{
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    padding:5,
-    borderRadius:20,
-    height:35
+  description: {
+    color: 'white',
+    fontSize: 10,
+    marginTop: 5,
   },
-  controls:{
-    flex:1,
-    flexDirection:'row',
-    width:'100%',
-    position:'absolute',
+  controls: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: Colors.light.test3
-  }
-
-
-})
+    alignItems: 'center',
+  },
+  button: {
+    padding: 10,
+    borderRadius: 20,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+});
