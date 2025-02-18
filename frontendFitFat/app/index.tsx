@@ -3,8 +3,9 @@ import { useAppStore } from '../store/store';
 import { Colors } from '../constants/colors';
 import Carousel from "../components/carousel/weklyCarousel/weklyCarousel";
 import ChefInfo from "@/components/chef/chef";
-import Slider from "@/components/carousel/highlightsCarousel/slider";
+//import Slider from "@/components/carousel/highlightsCarousel/slider";
 import { ImageSlider } from "@/placeholderData/data";
+import Slider from "@/components/carousel/tutorialcarousel/slider";
 
 const data = [
   { id: "1", title: "Segunda" },
@@ -68,7 +69,7 @@ export default function Index() {
             style={dynamicStyles.heroImage}
           />
         </View>
-
+      
         <View style={dynamicStyles.testContainer}>
           <Slider itemList={ImageSlider}/>
         </View>
