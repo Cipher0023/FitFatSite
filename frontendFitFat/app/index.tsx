@@ -4,7 +4,7 @@ import { Colors } from '../constants/colors';
 import Carousel from "../components/carousel/weklyCarousel/weklyCarousel";
 import ChefInfo from "@/components/chef/chef";
 //import Slider from "@/components/carousel/highlightsCarousel/slider";
-import { ImageSlider } from "@/placeholderData/data";
+import { ImageSlider } from "@/placeholderData/carouselData";
 import Slider from "@/components/carousel/tutorialcarousel/slider";
 
 const data = [

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from "react-native";
 import React from 'react';
-import { ImageSliderType } from "@/placeholderData/data";
+import { ImageSliderType } from "@/placeholderData/carouselData";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from "@/constants/colors";
 import { Ionicons } from "@expo/vector-icons";

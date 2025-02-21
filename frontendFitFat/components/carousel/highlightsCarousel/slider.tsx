@@ -1,6 +1,6 @@
 import { StyleSheet, View, FlatList, useWindowDimensions, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 import React, {useRef,useState} from "react";
-import { ImageSlider, ImageSliderType} from "@/placeholderData/data";
+import { ImageSlider, ImageSliderType} from "@/placeholderData/carouselData";
 import SliderItem from "./sliderItem";
 import Animated,{
   useSharedValue,

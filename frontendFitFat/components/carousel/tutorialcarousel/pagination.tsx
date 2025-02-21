@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Dimensions} from 'react-native'
 import React from 'react'
-import { ImageSliderType } from '@/placeholderData/data'
+import { ImageSliderType } from '@/placeholderData/carouselData'
 import Animated,{ SharedValue, useAnimatedStyle, interpolate, Extrapolation} from 'react-native-reanimated';
 
 type Props = {
